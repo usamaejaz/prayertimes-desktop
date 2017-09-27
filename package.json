@@ -1,0 +1,47 @@
+{
+  "name": "prayertimes",
+  "version": "1.0.0",
+  "description": "A simple yet effective prayer reminder.",
+  "main": "src/main.js",
+  "author": "Glaxosoft",
+  "scripts": {
+    "start": "electron .",
+    "rebuild": "electron-rebuild",
+    "package": "electron-packager . --asar.unpack \"*.+(node|dll)\" --overwrite true --platform win32 --arch x64 --out dist/ --icon resources/icon.ico --app-copyright Glaxosoft --win32metadata.CompanyName Glaxosoft --win32metadata.FileDescription \"Prayer Times\" --win32metadata.ProductName \"Prayer Times\" --win32metadata.OriginalFilename prayertimes.exe",
+    "setup": "electron-installer-windows --src dist/prayereminder-win32-x64/ --dest dist/installers/ --config config.json"
+  },
+  "homepage": "http://glaxosoft.com",
+  "dependencies": {
+    "auto-launch": "^5.0.1",
+    "babel-cli": "^6.22.2",
+    "babel-preset-electron": "^0.37.8",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "bulma": "^0.4.2",
+    "electron-squirrel-startup": "^1.0.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.1",
+    "moment": "^2.17.1",
+    "moment-hijri": "^2.0.1",
+    "node-notifier": "^5.1.2",
+    "node-persist": "^2.0.11",
+    "sortablejs": "^1.6.0",
+    "v-tooltip": "^2.0.0-beta.5",
+    "vue": "^2.3.3",
+    "vue2-filters": "^0.1.9"
+  },
+  "devDependencies": {
+    "electron": "^1.4.1",
+    "electron-prebuilt": "^1.4.13",
+    "electron-rebuild": "^1.5.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glaxosoft/prayertimes-desktop.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Glaxosoft/prayertimes-desktop/issues"
+  }
+}

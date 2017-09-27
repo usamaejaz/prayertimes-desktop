@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>...</title>
+    <link href="../../node_modules/bulma/css/bulma.css" type="text/css" rel="stylesheet"/>
+    <link href="../../node_modules/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
+    <style>
+        html {
+            overflow-y: auto;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        .is-clickable {
+            cursor: pointer;
+        }
+        .tooltip {
+            display: block !important;
+            padding: 4px;
+            z-index: 10000;
+        }
+
+        .tooltip .tooltip-inner {
+            background: rgba(0,0,0,.7);
+            color: white;
+            border-radius: 16px;
+            padding: 5px 10px 4px;
+            font-size: 14px;
+        }
+
+        .tooltip .tooltip-arrow{
+            display: none;
+        }
+
+        .tooltip[aria-hidden='true'] {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity .15s, visibility .15s;
+        }
+
+        .tooltip[aria-hidden='false'] {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity .15s;
+        }
+    </style>
+</head>
+<body>
+<div id="app" v-cloak>
+    <section class="hero is-info is-bold">
+        <div class="hero-body">
+            <div class="container" v-if="initialized">
+                <h2 class="subtitle is-pulled-right">
+                    {{ hijriDate }}
+                </h2>
+                <h1 class="title">
+                    {{ prayer.name | capitalize }} at {{ prayer.time }}
+                </h1>
+                <h2 class="subtitle">
+                    Remaining: {{ prayer.timeRemaining }}
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="section" v-if="initialized">
+        <div class="container">
+            <div class="tabs">
+                <ul>
+                    <li :class="{'is-active': activeTab == 'home'}" @click="showTab('home')"><a>Timings</a></li>
+                    <li :class="{'is-active': activeTab == 'settings'}" @click="showTab('settings')"><a>Settings</a>
+                    </li>
+                    <li :class="{'is-active': activeTab == 'help'}" @click="showTab('help')"><a>Help</a></li>
+                </ul>
+            </div>
+            <div class="content">
+                <div v-if="activeTab=='home'" class="box">
+                    <table class="table">
+                        <thead>
+                        <th>
+                            Prayer
+                        </th>
+                        <th>
+                            Time
+                        </th>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(time, prayerName) in times" v-if="prayerNames.indexOf(prayerName) > -1"
+                            :class="{'is-selected':prayerName == prayer.name}">
+                            <td>{{ prayerName | capitalize }}</td>
+                            <td>{{ time }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div v-if="activeTab=='settings'">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            Prayer Timings
+                        </div>
+                        <div class="panel-block">
+                            <div :style="(index === prayerNames.length - 1?'':'margin-right: 5px;')"
+                                 v-for="(prayer, index) in prayerNames">
+                                <label class="control">
+                                    {{ prayer | capitalize }}
+                                    <input :data-prayer="prayer" :title="prayer | capitalize"
+                                           class="input is-small customTimeInput" @change="setTime" type="time"
+                                           :placeholder="prayer | capitalize" :value="inputTime(prayer)" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            Rules
+                            <i class="fa fa-plus-circle is-pulled-right is-clickable" @click.prevent="addRule" v-tooltip="'Add Rule'"></i>
+                        </div>
+                        <div v-sortable="{ handle: '.handle',animation: 200, onUpdate: reorderRules }">
+                            <div class="panel-block" v-for="(rule, index) in settings.rules" :key="index">
+                                <div class="panel-icon">
+                                    <i class="fa fa-times is-clickable" @click="deleteRule(index)" v-tooltip="'Delete'"></i>
+                                </div>
+                                <div class="panel-icon">
+                                    <i class="fa fa-arrows is-clickable handle" v-tooltip="'Reorder'"></i>
+                                </div>
+                                <div class="column control">
+                                    <label>Type
+                                        <select class="input is-small is-1" v-model="rule.type" @change="saveSettings">
+                                            <option value="notify">Notify</option>
+                                            <option value="msgBox">Show dialog</option>
+                                            <option value="exec">Execute command</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="column control">
+                                    <label>Before (mins)
+                                        <input class="input is-small" type="number" v-model.number="rule.beforeMins" @change="saveSettings"/>
+                                    </label>
+                                </div>
+                                <div class="column control" v-if="rule.type === 'notify' || rule.type === 'msgBox'">
+                                    <label>Message
+                                        <input class="input is-small" type="text" v-model="rule.message" placeholder="default" @change="saveSettings"/>
+                                    </label>
+                                </div>
+                                <div class="column control" v-if="rule.type === 'exec'">
+                                    <label>Command
+                                        <input class="input is-small" type="text" v-model="rule.command" placeholder="./script" @change="saveSettings"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="activeTab=='help'" class="box">
+                    <p class="content">
+                        If you are experiencing any issues, bugs, or have any feature request, you can open an issue
+                        about it at <a @click.prevent="openLink(config.github)" target="_blank">github</a>.
+                        <br/>
+                        <br/>
+                        <i class="is-small">{{ config.github }}</i>
+                        <br/>
+                        <i class="is-small">{{ config.homepage }}</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="tooltips" v-show="!hideTooltips"></div>
+</div>
+</body>
+<script>
+    require("../app.js");
+</script>
+</html>

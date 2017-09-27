@@ -1,0 +1,17 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+.node-persist
+
+# Compiled program
+dist
+
+# Dependency directory
+node_modules/
