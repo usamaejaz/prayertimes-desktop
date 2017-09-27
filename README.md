@@ -11,6 +11,30 @@ A simple and easy to use electron based application to help you remind about pra
 - Can remind you about upcoming prayers and their times.
 - Increases productivity by making you aware and reminding you to take a break and pray :)
 
+### Running
+You will need NodeJS to build / run this app. Clone this repository and than install project dependencies.
+```
+git clone git@github.com:Glaxosoft/prayertimes-desktop.git
+cd prayertimes-desktop
+npm install
+```
+
+Now you are ready to run it!
+```
+npm start
+```
+
+### Packaging / Redistributing
+To package this app (for distribution)
+```
+npm run package
+```
+or to create installer
+```
+npm run setup
+```
+*Note that the above commands are for windows (64bit) only. Feel free to look into package.json `scripts` to extend it for your OS*
+
 ### Technology used
 
 - This application is based on [Electron](https://github.com/electron/electron). 
@@ -19,8 +43,6 @@ A simple and easy to use electron based application to help you remind about pra
 
 ### Contribute
 Contributions are welcomed :)
-
-
 
 ##### \#\#\#\#\#
 [glaxosoft.com](http://glaxosoft.com)
