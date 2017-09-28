@@ -151,7 +151,8 @@ function init() {
     ]));
 
     // set menu
-    let menuItems = [
+    let menuItems;
+    menuItems = [
         {
             label: 'File',
             submenu: [
@@ -163,12 +164,13 @@ function init() {
                     label: "Auto start",
                     type: "checkbox",
                     click(menuItem){
-                        menuItem.checked = !menuItem.checked;
+                        menuItems[0].submenu[1].checked = !menuItems[0].submenu[1].checked;
                         if(menuItem.checked){
                             autoLauncher.enable();
                         } else {
                             autoLauncher.disable();
                         }
+                        menu = Menu.setApplicationMenu(Menu.buildFromTemplate( menuItems ));
                     }
                 },
                 {
