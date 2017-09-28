@@ -24,6 +24,8 @@ Now you are ready to run it!
 npm start
 ```
 
+*Make sure you don't enable auto start while development mode (when using `npm start`) as it may add electron binary to the auto start which is not what was required. However, it will work good for the "packaged" version.*
+
 ### Packaging / Redistributing
 To package this app (for distribution)
 ```
