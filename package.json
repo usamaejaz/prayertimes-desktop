@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "A simple yet effective prayer reminder.",
   "main": "src/main.js",
-  "author": "Glaxosoft",
+  "author": "Usama Ejaz",
   "scripts": {
     "start": "electron .",
     "rebuild": "electron-rebuild",
     "package": "electron-packager . --asar.unpack \"*.+(node|dll)\" --overwrite true --platform win32 --arch x64 --out dist/ --icon resources/icon.ico --app-copyright Glaxosoft --win32metadata.CompanyName Glaxosoft --win32metadata.FileDescription \"Prayer Times\" --win32metadata.ProductName \"Prayer Times\" --win32metadata.OriginalFilename prayertimes.exe",
     "setup": "electron-installer-windows --src dist/prayereminder-win32-x64/ --dest dist/installers/ --config config.json"
   },
-  "homepage": "http://glaxosoft.com",
+  "homepage": "http://usamaejaz.com",
   "dependencies": {
     "auto-launch": "^5.0.1",
     "babel-cli": "^6.22.2",
@@ -38,10 +38,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Glaxosoft/prayertimes-desktop.git"
+    "url": "git+https://github.com/usamaejaz/prayertimes-desktop.git"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Glaxosoft/prayertimes-desktop/issues"
+    "url": "https://github.com/usamaejaz/prayertimes-desktop/issues"
   }
 }

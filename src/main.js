@@ -194,7 +194,7 @@ function init() {
                             ],
                             message: config.productName + " " + pkg.version,
                             detail: pkg.description + "\n\n" +
-                            "An open-source program created by glaxosoft.com" + "\n"
+                            "An open-source program created by Usama Ejaz" + "\n"
                         });
                         if (btnClicked === 1) {
                             shell.openExternal(config.github);

@@ -14,7 +14,7 @@ A simple and easy to use electron based application to help you remind about pra
 ### Running
 You will need NodeJS to build / run this app. Clone this repository and than install project dependencies.
 ```
-git clone git@github.com:Glaxosoft/prayertimes-desktop.git
+git clone git@github.com:usamaejaz/prayertimes-desktop.git
 cd prayertimes-desktop
 npm install
 ```
@@ -44,5 +44,6 @@ npm run setup
 ### Contribute
 Contributions are welcomed :)
 
-##### \#\#\#\#\#
+##### Some links
 [glaxosoft.com](http://glaxosoft.com)
+[usamaejaz.com](http://usamaejaz.com)
