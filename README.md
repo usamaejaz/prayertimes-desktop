@@ -11,7 +11,11 @@ A simple and easy to use electron based application to help you remind about pra
 - Can remind you about upcoming prayers and their times.
 - Increases productivity by making you aware and reminding you to take a break and pray :)
 
-### Running
+
+### Download
+Go to [Releases](https://github.com/usamaejaz/prayertimes-desktop/releases) to download a ready to use packaged version of this app for your OS / Platform.
+
+### Development
 You will need NodeJS to build / run this app. Clone this repository and than install project dependencies.
 ```
 git clone git@github.com:usamaejaz/prayertimes-desktop.git
@@ -31,11 +35,7 @@ To package this app (for distribution)
 ```
 npm run package
 ```
-or to create installer
-```
-npm run setup
-```
-*Note that the above commands are for windows (64bit) only. Feel free to look into package.json `scripts` to extend it for your OS*
+*Note that the above command will package the app for all platforms / OS*
 
 ### Technology used
 

@@ -8,8 +8,7 @@
   "scripts": {
     "start": "electron .",
     "rebuild": "electron-rebuild",
-    "package": "electron-packager . --asar.unpack \"*.+(node|dll)\" --overwrite true --platform win32 --arch x64 --out dist/ --icon resources/icon.ico --app-copyright Glaxosoft --win32metadata.CompanyName Glaxosoft --win32metadata.FileDescription \"Prayer Times\" --win32metadata.ProductName \"Prayer Times\" --win32metadata.OriginalFilename prayertimes.exe",
-    "setup": "electron-installer-windows --src dist/prayereminder-win32-x64/ --dest dist/installers/ --config config.json"
+    "package": "electron-packager . --asar.unpack \"*.+(node|dll)\" --overwrite true --all --out dist/ --icon resources/icon --app-copyright Glaxosoft --win32metadata.CompanyName Glaxosoft --win32metadata.FileDescription \"Prayer Times\" --win32metadata.ProductName \"Prayer Times\" --win32metadata.OriginalFilename prayertimes.exe"
   },
   "homepage": "http://usamaejaz.com",
   "dependencies": {
