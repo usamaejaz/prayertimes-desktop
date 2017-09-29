@@ -1,5 +1,6 @@
 {
   "name": "prayertimes",
+  "productName": "Prayer Times",
   "version": "1.0.0",
   "description": "A simple yet effective prayer reminder.",
   "main": "src/main.js",

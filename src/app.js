@@ -1,5 +1,6 @@
 const
     config = require("../config.json"),
+    pkg = require("../package.json"),
     moment = require("moment"),
     momentHijri = require("moment-hijri"),
     Vue = require("vue/dist/vue.common"),
@@ -13,7 +14,7 @@ const
     notifier = remote.getGlobal("notifier"),
     exec = require('child_process').exec;
 
-document.title = config.productName;
+document.title = pkg.productName;
 
 Vue.use(Vue2Filters);
 Vue.use(VTooltip, {
@@ -256,7 +257,7 @@ function init() {
 
             app.prayer = app.getPrayer();
 
-            document.title = config.productName + " - " + app.prayer.timeRemaining;
+            document.title = pkg.productName + " - " + app.prayer.timeRemaining;
 
             let currentMoment = moment();
 

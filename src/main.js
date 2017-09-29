@@ -85,7 +85,7 @@ function handleSquirrelEvent() {
 }
 
 let windows = {}, tray, menu, willQuitApp = false, isVisible = false, autoLauncher = new AutoLaunch({
-    name: config.productName
+    name: pkg.productName
 });
 
 
@@ -95,7 +95,9 @@ function init() {
     process.env.GOOGLE_API_KEY = config.googleApiKey;
 
     //you must first call storage.initSync
-    storage.initSync();
+    storage.initSync({
+        dir: app.getPath("userData") + "/.node-persist/storage"
+    });
 
     if(!storage.getItemSync("notFirstRun")){
         // is first run
@@ -135,7 +137,7 @@ function init() {
     global.toggleWindow = toggleWindow;
 
     tray = new Tray(path.join(basePath, config.icon));
-    tray.setToolTip(config.productName);
+    tray.setToolTip(pkg.productName);
     tray.on("click", toggleWindow);
     tray.setContextMenu(Menu.buildFromTemplate([
         {
@@ -194,7 +196,7 @@ function init() {
                                 "Github",
                                 "Website"
                             ],
-                            message: config.productName + " " + pkg.version,
+                            message: pkg.productName + " " + pkg.version,
                             detail: pkg.description + "\n\n" +
                             "An open-source program created by Usama Ejaz" + "\n"
                         });
