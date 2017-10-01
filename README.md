@@ -3,7 +3,7 @@ A simple and easy to use electron based application to help you remind about pra
 
 > "And seek help through patience and prayer, and indeed, it is difficult except for the humbly submissive"  (2:45 - Quran)
 
-### Some highlights
+### Some Highlights
 - Tries to predict prayer timings for your location on first launch, you can change timings.
 - Dynamic notification / reminding **Rules** which you can setup.
     - Rules can trigger "notification", show "popup dialog" or execute an "external program or a command".
@@ -37,11 +37,10 @@ npm run package
 ```
 *Note that the above command will package the app for all platforms / OS*
 
-### Technology used
+### Technology Used
 
 - This application is based on [Electron](https://github.com/electron/electron). 
 - The frontend interface uses [VueJS](https://github.com/vuejs/vue).
-- ...
 
 ### Contribute
 Contributions are welcomed :)
