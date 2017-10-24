@@ -1,4 +1,5 @@
 # Prayer Times
+
 A simple and easy to use electron based application to help you remind about prayer times.
 
 > "And seek help through patience and prayer, and indeed, it is difficult except for the humbly submissive"  (2:45 - Quran)
@@ -11,6 +12,7 @@ A simple and easy to use electron based application to help you remind about pra
 - Can remind you about upcoming prayers and their times.
 - Increases productivity by making you aware and reminding you to take a break and pray :)
 
+![Prayer Times Desktop App](https://usamaejaz.com/images/prayertimes-desktop.png)
 
 ### Download
 Go to [Releases](https://github.com/usamaejaz/prayertimes-desktop/releases) to download a ready to use packaged version of this app for your OS / Platform.
