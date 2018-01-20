@@ -12,8 +12,7 @@
     "postinstall": "electron-builder install-app-deps",
     "start": "cross-env NODE_ENV=development electron .",
     "pack": "electron-builder --dir -wl --ia32 --x64",
-    "dist": "electron-builder --ia32 --x64",
-    "dist-linux": "electron-builder -l --x64"
+    "dist": "electron-builder --ia32 --x64"
   },
   "build": {
     "appId": "com.usamaejaz.prayertimes-desktop",

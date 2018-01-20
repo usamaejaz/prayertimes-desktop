@@ -35,9 +35,16 @@ npm start
 ### Packaging / Redistributing
 To package this app (for distribution)
 ```
-npm run package
+npm run pack
 ```
-*Note that the above command will package the app for all platforms / OS*
+*Note that the above command will package the app for Windows and Linux (32 & 64 bit)*
+
+#### To generate installer
+To generate installer for this app.
+```
+npm run dist
+```
+This will create installer for current OS (32 & 64 bit)
 
 ### Technology Used
 
