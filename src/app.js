@@ -1,6 +1,5 @@
 const
     config = require("../config.json"),
-    pkg = require("../package.json"),
     moment = require("moment"),
     momentHijri = require("moment-hijri"),
     Vue = require("vue/dist/vue.common"),
@@ -12,9 +11,11 @@ const
     {remote, shell} = require("electron"),
     storage = remote.getGlobal("storage"),
     notifier = remote.getGlobal("notifier"),
-    exec = require('child_process').exec;
+    exec = require('child_process').exec,
+    DEV = process.env.NODE_ENV === 'development',
+    appID = DEV ? void 0 : "com.usamaejaz.prayertimes-desktop";
 
-document.title = pkg.productName;
+document.title = config.productName;
 
 Vue.use(Vue2Filters);
 Vue.use(VTooltip, {
@@ -257,7 +258,7 @@ function init() {
 
             app.prayer = app.getPrayer();
 
-            document.title = pkg.productName + " - " + app.prayer.timeRemaining;
+            document.title = config.productName + " - " + app.prayer.timeRemaining;
 
             let currentMoment = moment();
 
@@ -292,7 +293,8 @@ function init() {
                                     message: rule.message || "at " + app.prayer.time,
                                     icon: remote.getGlobal("icon"), // Absolute path (doesn't work on balloons)
                                     sound: true, // Only Notification Center or Windows Toasters
-                                    wait: true // Wait with callback, until user action is taken against notification
+                                    wait: true, // Wait with callback, until user action is taken against notification
+                                    appID: appID
                                 }, function (err, response) {
                                     // Response is response from notification
                                 });
@@ -318,7 +320,8 @@ function init() {
                                             'message': err.message || "While executing: " + rule.command,
                                             icon: remote.getGlobal("icon"), // Absolute path (doesn't work on balloons)
                                             sound: true, // Only Notification Center or Windows Toasters
-                                            wait: true // Wait with callback, until user action is taken against notification
+                                            wait: true, // Wait with callback, until user action is taken against notification
+                                            appID: appID
                                         }, function (err, response) {
                                             // Response is response from notification
                                             //console.log(arguments);
@@ -364,33 +367,4 @@ function init() {
         heartBeat();
     });
 
-    /*
-    window.test = function () {
-        let noti = notifier.notify({
-            'title': app.prayer.name.toUpperCase(),
-            'message': "at " + app.prayer.time,
-            icon: remote.getGlobal("icon"), // Absolute path (doesn't work on balloons)
-            sound: true, // Only Notification Center or Windows Toasters
-            wait: true // Wait with callback, until user action is taken against notification
-        }, function (err, response) {
-            // Response is response from notification
-            //console.log(arguments);
-        });
-
-        noti.on('click', function (notifierObject, options) {
-            // Triggers if `wait: true` and user clicks notification
-            console.log("click");
-        });
-
-        noti.on('timeout', function (notifierObject, options) {
-            // Triggers if `wait: true` and notification closes
-            console.log("timeout");
-        });
-
-
-    }
-    */
-
 }
-
-window.app = app;
