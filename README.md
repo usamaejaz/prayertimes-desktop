@@ -44,7 +44,7 @@ To generate installer for this app.
 ```
 npm run dist
 ```
-This will create installer for current OS (32 & 64 bit)
+This will create installer for Windows and Linux (32 & 64 bit)
 
 ### Technology Used
 
